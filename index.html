@@ -20,11 +20,12 @@
             right: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: #9ca3af;
+            color: #6b7280; /* text-gray-500 */
         }
         .tab-button.active {
             background-color: #06b6d4; /* cyan-600 */
             color: white;
+            border-color: #06b6d4;
         }
         .calculator-pane {
             display: none;
@@ -32,7 +33,6 @@
         .calculator-pane.active {
             display: block;
         }
-        /* Custom transition for smooth height change */
         .results-container {
             transition: max-height 0.7s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease;
             max-height: 0;
@@ -46,23 +46,23 @@
         .info-section {
             margin-top: 2rem;
             padding-top: 1.5rem;
-            border-top: 1px solid #374151; /* gray-700 */
+            border-top: 1px solid #e5e7eb; /* gray-200 */
         }
         .info-section h2 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #22d3ee; /* cyan-400 */
+            color: #0891b2; /* cyan-700 */
             margin-bottom: 1rem;
         }
         .info-section h3 {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #a5f3fc; /* cyan-200 */
+            color: #06b6d4; /* cyan-600 */
             margin-top: 1.5rem;
             margin-bottom: 0.75rem;
         }
         .info-section p, .info-section li {
-            color: #d1d5db; /* gray-300 */
+            color: #111827; /* gray-900 */
             line-height: 1.6;
         }
          .info-section ul {
@@ -71,236 +71,223 @@
             margin-top: 0.5rem;
         }
         .info-section strong {
-            color: #67e8f9; /* cyan-300 */
+            color: #111827; /* gray-900 */
+            font-weight: 700;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+<body class="bg-gray-100 text-gray-900 flex items-center justify-center min-h-screen p-4">
 
-    <div class="w-full max-w-3xl bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-8">
+    <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl border border-gray-200 p-6 md:p-8">
         
         <div class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-cyan-400">Suite de Calculadoras Fitness</h1>
-            <p class="text-gray-400 mt-2">Tu centro de herramientas para optimizar tu progreso.</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-cyan-600">Suite de Calculadoras Fitness</h1>
+            <p class="text-gray-600 mt-2">Tu centro de herramientas para optimizar tu progreso.</p>
         </div>
 
-        <!-- Tab Buttons -->
         <div class="mb-6">
-            <div class="flex flex-wrap -mb-px border-b border-gray-700 text-sm font-medium text-center text-gray-400">
-                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-500 transition active" data-tab="calories">Calorías y Macros</button>
-                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-500 transition" data-tab="fat">Grasa Corporal</button>
-                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-500 transition" data-tab="1rm">1RM</button>
-                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-500 transition" data-tab="protein">Proteína</button>
-                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-500 transition" data-tab="potential">Potencial Muscular</button>
+            <div class="flex flex-wrap -mb-px border-b border-gray-200 text-sm font-medium text-center text-gray-500">
+                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-700 hover:border-gray-300 transition active" data-tab="calories">Calorías y Macros</button>
+                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-700 hover:border-gray-300 transition" data-tab="fat">Grasa Corporal</button>
+                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-700 hover:border-gray-300 transition" data-tab="1rm">1RM</button>
+                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-700 hover:border-gray-300 transition" data-tab="protein">Proteína</button>
+                <button class="tab-button flex-auto md:flex-initial inline-block p-3 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-700 hover:border-gray-300 transition" data-tab="potential">Potencial Muscular</button>
             </div>
         </div>
 
-        <!-- Calculator Panes -->
         <div id="calculators-wrapper">
 
-            <!-- #1. Calories & Macros Calculator -->
             <div id="pane-calories" class="calculator-pane active">
                 <form id="calories-form" class="space-y-6">
-                    <!-- Form content... -->
-                    <div class="grid md:grid-cols-2 gap-4">
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-lg font-medium mb-2 text-gray-300">Género</label>
+                            <label class="block text-lg font-medium mb-2 text-gray-800">Género</label>
                             <div class="grid grid-cols-2 gap-4">
-                                <input type="radio" id="cmale" name="cgender" value="male" class="hidden" checked><label for="cmale" class="block w-full text-center py-3 px-4 bg-gray-700 rounded-lg cursor-pointer transition-all">Hombre</label>
-                                <input type="radio" id="cfemale" name="cgender" value="female" class="hidden"><label for="cfemale" class="block w-full text-center py-3 px-4 bg-gray-700 rounded-lg cursor-pointer transition-all">Mujer</label>
+                                <input type="radio" id="cmale" name="cgender" value="male" class="hidden" checked><label for="cmale" class="block w-full text-center py-3 px-4 bg-gray-200 rounded-lg cursor-pointer transition-all">Hombre</label>
+                                <input type="radio" id="cfemale" name="cgender" value="female" class="hidden"><label for="cfemale" class="block w-full text-center py-3 px-4 bg-gray-200 rounded-lg cursor-pointer transition-all">Mujer</label>
                             </div>
                         </div>
                         <div>
-                            <label for="age" class="block text-lg font-medium mb-2 text-gray-300">Edad</label>
-                            <div class="input-group"><input type="number" id="age" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500" placeholder="Ej: 25" required><span class="input-unit">años</span></div>
+                            <label for="age" class="block text-lg font-medium mb-2 text-gray-800">Edad</label>
+                            <div class="input-group"><input type="number" id="age" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Ej: 25" required><span class="input-unit">años</span></div>
                         </div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div class="input-group"><label for="cheight" class="block text-sm font-medium mb-1 text-gray-300">Altura</label><input type="number" id="cheight" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500" placeholder="Ej: 175" required><span class="input-unit">cm</span></div>
-                        <div class="input-group"><label for="cweight" class="block text-sm font-medium mb-1 text-gray-300">Peso</label><input type="number" id="cweight" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500" placeholder="Ej: 70" required><span class="input-unit">kg</span></div>
+                        <div class="input-group"><label for="cheight" class="block text-sm font-medium mb-1 text-gray-700">Altura</label><input type="number" id="cheight" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Ej: 175" required><span class="input-unit">cm</span></div>
+                        <div class="input-group"><label for="cweight" class="block text-sm font-medium mb-1 text-gray-700">Peso</label><input type="number" id="cweight" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Ej: 70" required><span class="input-unit">kg</span></div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div><label for="activity" class="block text-sm font-medium mb-1 text-gray-300">Nivel de Actividad</label><select id="activity" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500"><option value="1.2">Sedentario (poco o nada)</option><option value="1.375">Ligero (1-3 días/sem)</option><option value="1.55">Moderado (3-5 días/sem)</option><option value="1.725">Activo (6-7 días/sem)</option><option value="1.9">Muy Activo (trabajo físico/doble entreno)</option></select></div>
-                        <div><label for="goal" class="block text-sm font-medium mb-1 text-gray-300">Objetivo</label><select id="goal" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500"><option value="-500">Perder peso (-500 kcal)</option><option value="0" selected>Mantener peso</option><option value="300">Ganar peso (+300 kcal)</option></select></div>
+                        <div><label for="activity" class="block text-sm font-medium mb-1 text-gray-700">Nivel de Actividad</label><select id="activity" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"><option value="1.2">Sedentario (poco o nada)</option><option value="1.375">Ligero (1-3 días/sem)</option><option value="1.55">Moderado (3-5 días/sem)</option><option value="1.725">Activo (6-7 días/sem)</option><option value="1.9">Muy Activo (trabajo físico/doble entreno)</option></select></div>
+                        <div><label for="goal" class="block text-sm font-medium mb-1 text-gray-700">Objetivo</label><select id="goal" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"><option value="-500">Déficit (definir)</option><option value="0" selected>Mantenimiento</option><option value="300">Superávit (volumen)</option></select></div>
                     </div>
-                    <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular Calorías</button>
+                    <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular Calorías</button>
                 </form>
                 <div id="results-calories" class="results-container"></div>
-                
                 <div class="info-section">
-                    <h2>Guía Esencial para Nuestra Calculadora de Calorías y Macros</h2>
-                    <p>Nuestra <strong>calculadora de calorías y macronutrientes</strong> es una herramienta fundamental para cualquiera que busque optimizar su nutrición, ya sea para <strong>perder peso</strong>, <strong>ganar masa muscular</strong> o simplemente mantener un estilo de vida saludable. Entender tus necesidades energéticas es el primer paso para tomar el control de tu dieta.</p>
-                    <h3>¿Cómo Calcular tus Calorías Diarias?</h3>
-                    <p>Para <strong>calcular tus calorías diarias</strong>, la herramienta estima primero tu <strong>Metabolismo Basal (TMB)</strong>, que es la energía que tu cuerpo gasta en reposo. Luego, a este valor se le aplica un factor según tu nivel de actividad para obtener tu <strong>Gasto Energético Total Diario (GETD)</strong>. Este es el número de calorías que necesitas para <strong>mantener tu peso</strong> actual.</p>
-                    <h3>La Importancia de los Macronutrientes (Macros)</h3>
-                    <p><strong>Contar macros</strong> es tan importante como contar calorías, ya que cada uno cumple funciones vitales:</p>
+                    <h2>Calculadora de Calorías y Macros: Tu Plan Nutricional</h2>
+                    <p>Esta <strong>calculadora de calorías y macronutrientes</strong> es tu punto de partida para lograr cualquier objetivo físico. Saber cuánta energía y qué nutrientes necesita tu cuerpo es esencial para <strong>calcular una dieta</strong> efectiva, ya sea para <strong>definir</strong>, entrar en <strong>volumen</strong> o simplemente mantenerte saludable.</p>
+                    <h3>¿Qué son las Necesidades Calóricas Diarias (TDEE)?</h3>
+                    <p>El Gasto Energético Total Diario (TDEE o GETD) es el número de calorías que tu cuerpo quema en un día. Lo calculamos a partir de dos datos clave:</p>
                     <ul>
-                        <li>▶️ <strong>Proteínas:</strong> Esenciales para la reparación y construcción de músculo, la saciedad y la salud de los tejidos.</li>
-                        <li>▶️ <strong>Carbohidratos:</strong> Son tu principal fuente de energía, imprescindibles para el rendimiento deportivo y la función cerebral.</li>
-                        <li>▶️ <strong>Grasas:</strong> Fundamentales para la producción hormonal, la absorción de vitaminas y la salud celular.</li>
+                        <li><strong>Metabolismo Basal (TMB):</strong> Las calorías que necesitas para vivir, en reposo total. Usamos la fórmula de Mifflin-St Jeor, la más precisa según los estudios.</li>
+                        <li><strong>Nivel de Actividad Física:</strong> Multiplicamos tu TMB por un factor que representa tu actividad diaria, desde un trabajo sedentario hasta entrenamientos intensos.</li>
                     </ul>
-                    <h3>Aplica los Resultados a tus Objetivos</h3>
-                    <p>Una vez conozcas tus <strong>necesidades calóricas</strong> de mantenimiento, puedes ajustarlas a tu meta:</p>
+                    <p>El resultado es tu <strong>gasto calórico de mantenimiento</strong>. A partir de ahí, todo es ajustar.</p>
+                    <h3>Cómo Calcular Macros para Volumen o Definición</h3>
+                    <p>Los macros (proteínas, grasas y carbohidratos) son los pilares de tu dieta. Nuestra calculadora los distribuye para optimizar tus resultados:</p>
                     <ul>
-                        <li><strong>Para Perder Peso:</strong> Deberás crear un <strong>déficit calórico</strong>, es decir, consumir menos calorías de las que indica tu GETD. Nuestra calculadora te sugiere un déficit moderado para una pérdida de grasa sostenible.</li>
-                        <li><strong>Para Ganar Masa Muscular:</strong> Se requiere un <strong>superávit calórico</strong> controlado, consumiendo un poco más de tu GETD para dar a tu cuerpo la energía extra que necesita para construir nuevo tejido muscular.</li>
+                        <li><strong>Para ganar músculo (volumen):</strong> Selecciona "Superávit". La calculadora añadirá unas 300 kcal a tu mantenimiento, dándote la energía necesaria para construir músculo de forma limpia.</li>
+                        <li><strong>Para perder grasa (definir):</strong> Selecciona "Déficit". Se restarán unas 500 kcal para promover la pérdida de grasa preservando al máximo el músculo que tanto te ha costado ganar.</li>
                     </ul>
-                    <p class="mt-4">Usa esta <strong>calculadora de nutrición</strong> como el punto de partida para crear tu <strong>plan de nutrición personalizado</strong> y alcanzar tus metas de forma eficiente.</p>
+                     <p class="mt-4">Usa estos datos para crear un <strong>plan nutricional</strong> a tu medida. ¡La precisión es la clave del éxito!</p>
                 </div>
             </div>
 
-            <!-- #2. Body Fat Calculator -->
             <div id="pane-fat" class="calculator-pane">
                 <form id="fat-form" class="space-y-6">
-                    <!-- Form content... -->
-                     <p class="text-sm text-center text-gray-400">Usa el método de la Marina de EE.UU. Mide en la parte más estrecha (cintura/cuello) o ancha (cadera).</p>
+                     <p class="text-sm text-center text-gray-600">Usa el método de la Marina de EE.UU. Mide en la parte más estrecha (cintura/cuello) o ancha (cadera).</p>
                     <div>
-                        <label class="block text-lg font-medium mb-2 text-gray-300">Género</label>
+                        <label class="block text-lg font-medium mb-2 text-gray-800">Género</label>
                         <div class="grid grid-cols-2 gap-4">
-                            <input type="radio" id="fmale" name="fgender" value="male" class="hidden" checked><label for="fmale" class="block w-full text-center py-3 px-4 bg-gray-700 rounded-lg cursor-pointer transition-all">Hombre</label>
-                            <input type="radio" id="ffemale" name="fgender" value="female" class="hidden"><label for="ffemale" class="block w-full text-center py-3 px-4 bg-gray-700 rounded-lg cursor-pointer transition-all">Mujer</label>
+                            <input type="radio" id="fmale" name="fgender" value="male" class="hidden" checked><label for="fmale" class="block w-full text-center py-3 px-4 bg-gray-200 rounded-lg cursor-pointer transition-all">Hombre</label>
+                            <input type="radio" id="ffemale" name="fgender" value="female" class="hidden"><label for="ffemale" class="block w-full text-center py-3 px-4 bg-gray-200 rounded-lg cursor-pointer transition-all">Mujer</label>
                         </div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div class="input-group"><label for="fheight" class="block text-sm font-medium mb-1 text-gray-300">Altura</label><input type="number" id="fheight" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 175" required><span class="input-unit">cm</span></div>
-                        <div class="input-group"><label for="neck" class="block text-sm font-medium mb-1 text-gray-300">Cuello</label><input type="number" id="neck" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 38" required><span class="input-unit">cm</span></div>
-                        <div class="input-group"><label for="waist" class="block text-sm font-medium mb-1 text-gray-300">Cintura</label><input type="number" id="waist" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 80" required><span class="input-unit">cm</span></div>
-                        <div id="hip-container" class="input-group hidden"><label for="hip" class="block text-sm font-medium mb-1 text-gray-300">Cadera</label><input type="number" id="hip" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 95"><span class="input-unit">cm</span></div>
+                        <div class="input-group"><label for="fheight" class="block text-sm font-medium mb-1 text-gray-700">Altura</label><input type="number" id="fheight" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 175" required><span class="input-unit">cm</span></div>
+                        <div class="input-group"><label for="neck" class="block text-sm font-medium mb-1 text-gray-700">Cuello</label><input type="number" id="neck" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 38" required><span class="input-unit">cm</span></div>
+                        <div class="input-group"><label for="waist" class="block text-sm font-medium mb-1 text-gray-700">Cintura</label><input type="number" id="waist" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 80" required><span class="input-unit">cm</span></div>
+                        <div id="hip-container" class="input-group hidden"><label for="hip" class="block text-sm font-medium mb-1 text-gray-700">Cadera</label><input type="number" id="hip" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 95"><span class="input-unit">cm</span></div>
                     </div>
-                    <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular % Grasa</button>
+                    <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular % Grasa</button>
                 </form>
                 <div id="results-fat" class="results-container"></div>
                 <div class="info-section">
-                    <h2>Todo sobre la Calculadora de Grasa Corporal</h2>
-                    <p>Nuestra <strong>calculadora de porcentaje de grasa corporal</strong> te ofrece una estimación fiable de tu composición corporal, un indicador mucho más preciso de tu salud y estado de forma que el simple peso en la báscula. Conocer este dato es clave para evaluar tu progreso real.</p>
-                    <h3>¿Por Qué Medir la Grasa Corporal?</h3>
-                    <p>Saber tu <strong>porcentaje de grasa corporal (%GC)</strong> te permite:</p>
+                    <h2>Calculadora de Grasa Corporal Precisa</h2>
+                    <p>Olvídate de la báscula. Para conocer tu verdadero progreso, necesitas <strong>calcular tu porcentaje de grasa corporal</strong>. Esta herramienta te permite <strong>medir la grasa corporal en casa</strong> de forma sencilla y fiable, dándote una visión clara de tu <strong>composición corporal</strong>.</p>
+                    <h3>¿Por Qué es Clave Medir tu Grasa Corporal?</h3>
+                    <p>Tu peso total no distingue entre músculo, grasa, agua y huesos. En cambio, conocer tu <strong>índice de grasa corporal</strong> te permite:</p>
                     <ul>
-                        <li>▶️ Diferenciar entre pérdida de grasa y pérdida de músculo durante una etapa de definición.</li>
-                        <li>▶️ Establecer objetivos de <strong>composición corporal</strong> más inteligentes y saludables.</li>
-                        <li>▶️ Entender mejor tu nivel de fitness y los riesgos asociados a un exceso o defecto de grasa.</li>
+                        <li>Establecer un punto de partida real para tus objetivos de definición o volumen.</li>
+                        <li>Asegurarte de que estás perdiendo grasa y no músculo.</li>
+                        <li>Entender mejor tu salud, ya que un porcentaje de grasa corporal saludable es un mejor indicador que el IMC (Índice de Masa Corporal).</li>
                     </ul>
-                    <h3>Método de la Marina de EE.UU.</h3>
-                    <p>Esta herramienta utiliza la fórmula desarrollada por la Marina de los Estados Unidos, un método validado que estima el %GC a partir de mediciones de circunferencia corporal. Es una alternativa práctica y accesible a métodos más complejos como la plicometría o la bioimpedancia.</p>
-                    <h3>Cómo Tomar las Medidas Correctamente</h3>
-                    <p>Para asegurar la precisión al <strong>medir la grasa corporal</strong>, sigue estos consejos:</p>
+                    <h3>El Método de la Marina (US Navy)</h3>
+                    <p>Nuestra calculadora emplea el <strong>método de la Marina de EE. UU.</strong>, una fórmula probada que utiliza medidas corporales simples para estimar la grasa corporal con una precisión de ±3%. Es la forma más práctica y accesible de hacer un seguimiento sin necesidad de aparatos costosos.</p>
+                    <h3>Cómo Medirte Correctamente</h3>
+                    <p>Para obtener el resultado más preciso, mide siempre en las mismas condiciones (por ejemplo, por la mañana en ayunas):</p>
                     <ul>
-                        <li><strong>Cuello:</strong> Mide la circunferencia justo debajo de la laringe (nuez de Adán).</li>
-                        <li><strong>Cintura:</strong> Para hombres, a la altura del ombligo. Para mujeres, en la parte más estrecha.</li>
-                        <li><strong>Cadera (solo mujeres):</strong> Mide la parte más ancha de tus caderas.</li>
+                        <li><strong>Cuello:</strong> Rodea la parte más ancha, justo debajo de la nuez.</li>
+                        <li><strong>Cintura:</strong> A la altura del ombligo, sin apretar ni dejar la cinta suelta.</li>
+                        <li><strong>Cadera (mujeres):</strong> En la zona de máxima circunferencia.</li>
                     </ul>
-                    <p class="mt-4">Utiliza esta calculadora para hacer un seguimiento periódico y ajustar tu plan de entrenamiento y nutrición para alcanzar tu <strong>porcentaje de grasa corporal ideal</strong>.</p>
+                    <p class="mt-4">Registra tus mediciones cada 2-4 semanas para seguir tu progreso hacia un <strong>porcentaje de grasa corporal ideal</strong>.</p>
                 </div>
             </div>
             
-            <!-- #3. 1RM Calculator -->
             <div id="pane-1rm" class="calculator-pane">
                  <form id="1rm-form" class="space-y-6">
-                    <!-- Form content... -->
-                    <p class="text-sm text-center text-gray-400">Calcula tu repetición máxima (1RM) basado en el peso que puedes levantar varias veces.</p>
+                    <p class="text-sm text-center text-gray-600">Calcula tu repetición máxima (1RM) basado en el peso que puedes levantar varias veces.</p>
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div class="input-group"><label for="lift-weight" class="block text-sm font-medium mb-1 text-gray-300">Peso Levantado</label><input type="number" id="lift-weight" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 100" required><span class="input-unit">kg</span></div>
-                        <div class="input-group"><label for="reps" class="block text-sm font-medium mb-1 text-gray-300">Repeticiones</label><input type="number" id="reps" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 5" max="12" required><span class="input-unit">reps</span></div>
+                        <div class="input-group"><label for="lift-weight" class="block text-sm font-medium mb-1 text-gray-700">Peso Levantado</label><input type="number" id="lift-weight" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 100" required><span class="input-unit">kg</span></div>
+                        <div class="input-group"><label for="reps" class="block text-sm font-medium mb-1 text-gray-700">Repeticiones</label><input type="number" id="reps" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 5" max="12" required><span class="input-unit">reps</span></div>
                     </div>
-                    <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular 1RM</button>
+                    <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular 1RM</button>
                 </form>
                 <div id="results-1rm" class="results-container"></div>
                 <div class="info-section">
-                    <h2>Calcula tu Fuerza con la Calculadora de 1RM</h2>
-                    <p>La <strong>calculadora de 1RM (Una Repetición Máxima)</strong> es una herramienta indispensable para cualquier levantador de pesas. Te permite estimar tu <strong>fuerza máxima</strong> en un ejercicio sin necesidad de realizar un levantamiento al límite, lo que reduce significativamente el riesgo de lesión.</p>
-                    <h3>¿Qué es el 1RM y por qué es Importante?</h3>
-                    <p>Tu <strong>1RM</strong> es el peso máximo que puedes levantar para una sola repetición con la técnica correcta. Conocer este dato es crucial para:</p>
+                    <h2>Calculadora de 1RM: Mide tu Fuerza Máxima</h2>
+                    <p>¿Quieres saber cuál es tu verdadera fuerza? La <strong>calculadora de 1RM</strong> te permite <strong>estimar tu repetición máxima</strong> (el máximo peso que puedes levantar una vez) de forma segura y precisa. Es una herramienta esencial para estructurar tu <strong>plan de entrenamiento</strong> y medir tu progreso.</p>
+                    <h3>¿Qué es el 1RM y Para Qué Sirve?</h3>
+                    <p>El <strong>1RM (Una Repetición Máxima)</strong> es el estándar de oro para medir la fuerza. Conocer tu 1RM en ejercicios básicos como el <strong>press banca</strong>, sentadilla o peso muerto te ayuda a:</p>
                     <ul>
-                        <li>▶️ Programar la intensidad de tu entrenamiento de forma precisa.</li>
-                        <li>▶️ Estructurar tus ciclos de periodización (bloques de fuerza, hipertrofia, etc.).</li>
-                        <li>▶️ Medir tu progreso en fuerza de manera objetiva a lo largo del tiempo.</li>
+                        <li>Programar tus entrenamientos basándote en porcentajes de intensidad reales.</li>
+                        <li>Saber si te estás haciendo más fuerte con el tiempo.</li>
+                        <li>Ajustar las cargas de trabajo para diferentes objetivos (fuerza, hipertrofia, resistencia).</li>
                     </ul>
-                    <h3>Cómo Usar los Porcentajes de tu 1RM</h3>
-                    <p>Una vez que sabes tu 1RM, puedes <strong>planificar tu entrenamiento</strong> usando porcentajes para diferentes objetivos:</p>
+                    <h3>Estima tu 1RM sin Riesgo</h3>
+                    <p>Hacer un levantamiento máximo real es arriesgado y requiere mucha preparación. Por eso, esta <strong>calculadora de fuerza</strong> utiliza la <strong>fórmula de Brzycki</strong>, una de las más fiables, para <strong>calcular tu repetición máxima</strong> a partir de una serie más ligera (por ejemplo, el peso que puedes mover para 5-8 repeticiones).</p>
+                    <h3>Entrena con Porcentajes de tu 1RM</h3>
+                    <p>Una vez que tienes tu 1RM estimado, puedes usar los porcentajes para optimizar cada serie:</p>
                     <ul>
-                        <li><strong>Fuerza:</strong> Trabaja principalmente en el rango del 85-100% de tu 1RM.</li>
-                        <li><strong>Hipertrofia (Ganancia Muscular):</strong> El rango ideal suele estar entre el 65-85% de tu 1RM.</li>
-                        <li><strong>Resistencia Muscular:</strong> Se trabaja con porcentajes inferiores al 65% de tu 1RM.</li>
+                        <li><strong>Fuerza Pura (85-100%):</strong> Series de 1 a 5 repeticiones.</li>
+                        <li><strong>Hipertrofia (65-85%):</strong> Series de 6 a 12 repeticiones, el rango ideal para ganar músculo.</li>
+                        <li><strong>Resistencia Muscular (menos del 65%):</strong> Series de más de 12 repeticiones.</li>
                     </ul>
-                    <p class="mt-4">Introduce el peso que levantaste y el número de repeticiones que completaste (idealmente entre 2 y 10 para mayor precisión) y nuestra <strong>calculadora de fuerza</strong> te dará una estimación fiable de tu 1RM y los pesos correspondientes para cada zona de entrenamiento.</p>
+                    <p class="mt-4">Utiliza esta herramienta para dejar de adivinar y empezar a entrenar con precisión.</p>
                 </div>
             </div>
 
-            <!-- #4. Protein Calculator -->
             <div id="pane-protein" class="calculator-pane">
                 <form id="protein-form" class="space-y-6">
-                    <!-- Form content... -->
-                    <p class="text-sm text-center text-gray-400">Estima tus necesidades diarias de proteína según tu peso y objetivo.</p>
+                    <p class="text-sm text-center text-gray-600">Estima tus necesidades diarias de proteína según tu peso y objetivo.</p>
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div class="input-group"><label for="pweight" class="block text-sm font-medium mb-1 text-gray-300">Tu Peso Corporal</label><input type="number" id="pweight" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 70" required><span class="input-unit">kg</span></div>
-                        <div><label for="pgoal" class="block text-sm font-medium mb-1 text-gray-300">Objetivo Principal</label><select id="pgoal" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3"><option value="1.4">Mantenimiento / Salud General</option><option value="1.6">Ganancia Muscular</option><option value="1.8">Pérdida de Grasa (preservar músculo)</option><option value="1.2">Deportista de Resistencia</option></select></div>
+                        <div class="input-group"><label for="pweight" class="block text-sm font-medium mb-1 text-gray-700">Tu Peso Corporal</label><input type="number" id="pweight" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 70" required><span class="input-unit">kg</span></div>
+                        <div><label for="pgoal" class="block text-sm font-medium mb-1 text-gray-700">Objetivo Principal</label><select id="pgoal" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3"><option value="1.4">Mantenimiento / Salud</option><option value="1.8">Ganar Músculo (Volumen)</option><option value="2.0">Perder Grasa (Definición)</option><option value="1.2">Deportes de Resistencia</option></select></div>
                     </div>
-                    <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular Proteína</button>
+                    <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular Proteína</button>
                 </form>
                 <div id="results-protein" class="results-container"></div>
                 <div class="info-section">
-                    <h2>Calculadora de Proteína: ¿Cuánta Necesitas Realmente?</h2>
-                    <p>La proteína es el macronutriente estrella para la recuperación y el crecimiento muscular, pero saber <strong>cuánta proteína necesitas</strong> puede ser confuso. Nuestra <strong>calculadora de proteína diaria</strong> te da una recomendación personalizada basada en la evidencia científica y tus objetivos específicos.</p>
-                    <h3>El Papel de la Proteína en tu Cuerpo</h3>
-                    <p>Asegurar una ingesta adecuada de proteína es vital, especialmente si eres una persona activa. Sus funciones principales incluyen:</p>
+                    <h2>Calculadora de Proteínas: Tu Dosis Diaria</h2>
+                    <p>Saber <strong>cuánta proteína necesitas al día</strong> es fundamental para alcanzar tus metas. No se trata de comer proteína sin control, sino de darle a tu cuerpo la cantidad justa. Con esta <strong>calculadora de proteínas</strong>, obtendrás tu <strong>requerimiento de proteína diario</strong> personalizado.</p>
+                    <h3>¿Por Qué es tan Importante la Proteína?</h3>
+                    <p>La proteína es el "ladrillo" de tus músculos. Consumir la cantidad adecuada te garantiza:</p>
                     <ul>
-                        <li>▶️ Reparar las fibras musculares dañadas durante el entrenamiento.</li>
-                        <li>▶️ Construir nuevo tejido muscular (hipertrofia).</li>
-                        <li>▶️ Aumentar la saciedad, lo que ayuda en etapas de pérdida de grasa.</li>
-                        <li>▶️ Apoyar la salud de huesos, piel y cabello.</li>
+                        <li>Una correcta <strong>reparación y crecimiento muscular</strong> después de entrenar.</li>
+                        <li><strong>Preservar la masa muscular</strong> durante una etapa de pérdida de peso.</li>
+                        <li>Mayor <strong>saciedad</strong> en tus comidas, lo que te ayuda a controlar el apetito.</li>
                     </ul>
-                    <h3>Requerimientos de Proteína Según tu Objetivo</h3>
-                    <p>No todo el mundo necesita la misma cantidad. La ingesta óptima varía:</p>
+                    <h3>Cuánta Proteína Tomar para Ganar Músculo o Definir</h3>
+                    <p>Tus necesidades cambian según tu objetivo. Por eso nuestra calculadora ajusta el multiplicador:</p>
                     <ul>
-                        <li><strong>Ganancia Muscular:</strong> Se necesita un aporte más elevado para maximizar la síntesis de proteínas musculares. Un rango común es 1.6-2.2 g/kg.</li>
-                        <li><strong>Pérdida de Grasa:</strong> Una ingesta alta de proteína (1.8-2.5 g/kg) ayuda a preservar la masa muscular mientras estás en un déficit calórico y aumenta la saciedad.</li>
-                        <li><strong>Mantenimiento y Salud:</strong> Para personas activas, un rango de 1.2-1.6 g/kg es generalmente suficiente.</li>
+                        <li><strong>Para Ganar Músculo (Volumen):</strong> Se recomienda entre <strong>1.6 y 2.0 gramos de proteína por kilo de peso</strong>. Esto maximiza la síntesis de proteínas musculares.</li>
+                        <li><strong>Para Perder Grasa (Definición):</strong> La necesidad aumenta para proteger el músculo. Apunta a <strong>1.8 - 2.2 g/kg</strong>.</li>
+                        <li><strong>Mantenimiento:</strong> Con <strong>1.2 - 1.6 g/kg</strong> suele ser suficiente para mantener tu físico.</li>
                     </ul>
-                    <p class="mt-4">Introduce tu peso y selecciona tu objetivo principal para descubrir tu <strong>ingesta de proteína recomendada</strong>. Este dato te ayudará a estructurar tu dieta para conseguir los mejores resultados posibles.</p>
+                    <p class="mt-4">Introduce tu peso, elige tu objetivo y descubre la dosis de proteína que te llevará al siguiente nivel. ¡Deja de adivinar y empieza a construir!</p>
                 </div>
             </div>
 
-            <!-- #5. Muscle Potential Calculator -->
             <div id="pane-potential" class="calculator-pane">
                  <form id="muscle-form" class="space-y-6">
-                    <!-- Form content... -->
                     <div>
-                        <label class="block text-lg font-medium mb-2 text-gray-300">Género</label>
+                        <label class="block text-lg font-medium mb-2 text-gray-800">Género</label>
                         <div class="grid grid-cols-2 gap-4">
-                            <input type="radio" id="mpmale" name="mpgender" value="male" class="hidden" checked><label for="mpmale" class="block w-full text-center py-3 px-4 bg-gray-700 rounded-lg cursor-pointer transition-all">Hombre</label>
-                            <input type="radio" id="mpfemale" name="mpgender" value="female" class="hidden"><label for="mpfemale" class="block w-full text-center py-3 px-4 bg-gray-700 rounded-lg cursor-pointer transition-all">Mujer</label>
+                            <input type="radio" id="mpmale" name="mpgender" value="male" class="hidden" checked><label for="mpmale" class="block w-full text-center py-3 px-4 bg-gray-200 rounded-lg cursor-pointer transition-all">Hombre</label>
+                            <input type="radio" id="mpfemale" name="mpgender" value="female" class="hidden"><label for="mpfemale" class="block w-full text-center py-3 px-4 bg-gray-200 rounded-lg cursor-pointer transition-all">Mujer</label>
                         </div>
                     </div>
                     <div class="grid md:grid-cols-3 gap-6">
-                        <div class="input-group"><label for="mpheight" class="block text-sm font-medium mb-2 text-gray-300">Altura</label><input type="number" id="mpheight" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 175" required><span class="input-unit">cm</span></div>
-                        <div class="input-group"><label for="wrist" class="block text-sm font-medium mb-2 text-gray-300">Muñeca</label><input type="number" id="wrist" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 17" step="0.1" required><span class="input-unit">cm</span></div>
-                        <div class="input-group"><label for="ankle" class="block text-sm font-medium mb-2 text-gray-300">Tobillo</label><input type="number" id="ankle" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3" placeholder="Ej: 22" step="0.1" required><span class="input-unit">cm</span></div>
+                        <div class="input-group"><label for="mpheight" class="block text-sm font-medium mb-2 text-gray-700">Altura</label><input type="number" id="mpheight" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 175" required><span class="input-unit">cm</span></div>
+                        <div class="input-group"><label for="wrist" class="block text-sm font-medium mb-2 text-gray-700">Muñeca</label><input type="number" id="wrist" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 17" step="0.1" required><span class="input-unit">cm</span></div>
+                        <div class="input-group"><label for="ankle" class="block text-sm font-medium mb-2 text-gray-700">Tobillo</label><input type="number" id="ankle" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3" placeholder="Ej: 22" step="0.1" required><span class="input-unit">cm</span></div>
                     </div>
                     <div>
-                        <label for="level" class="block text-lg font-medium mb-2 text-gray-300">Nivel de Experiencia</label>
-                        <select id="level" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3"><option value="beginner">Novato (0-1 años)</option><option value="intermediate">Intermedio (1-3 años)</option><option value="advanced">Avanzado (+3 años)</option></select>
+                        <label for="level" class="block text-lg font-medium mb-2 text-gray-800">Nivel de Experiencia</label>
+                        <select id="level" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3"><option value="beginner">Novato (0-1 años)</option><option value="intermediate">Intermedio (1-3 años)</option><option value="advanced">Avanzado (+3 años)</option></select>
                     </div>
-                    <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular Potencial</button>
+                    <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-4 rounded-lg text-lg transition-all shadow-lg shadow-cyan-500/20">Calcular Potencial</button>
                 </form>
                 <div id="results-potential" class="results-container"></div>
-                 <div class="info-section">
-                    <h2>Descubre tu Potencial de Ganancia Muscular</h2>
-                    <p>¿Te has preguntado alguna vez <strong>cuánto músculo puedes ganar</strong> de forma natural? Nuestra <strong>calculadora de potencial muscular</strong> te ofrece una estimación realista basada en modelos científicos, ayudándote a establecer expectativas claras y a mantener la motivación a largo plazo.</p>
-                    <h3>Tu Límite Genético Muscular</h3>
-                    <p>Todos tenemos un <strong>límite genético</strong> para la ganancia de masa muscular, determinado en gran medida por nuestra estructura ósea. Esta calculadora utiliza el <strong>modelo de Casey Butt</strong>, que considera tu altura y las circunferencias de muñeca y tobillo para estimar tu <strong>máxima masa muscular magra</strong> potencial.</p>
-                    <h3>El Ritmo de Ganancia Muscular (Modelo de Lyle McDonald)</h3>
-                    <p>Ganar músculo no es un proceso lineal. El ritmo al que puedes construir nuevo tejido es mucho más rápido al principio de tu carrera en el gimnasio y disminuye con los años de entrenamiento. Basándonos en el <strong>modelo de Lyle McDonald</strong>, te mostramos una proyección realista:</p>
+                <div class="info-section">
+                    <h2>Calculadora de Potencial Muscular Genético</h2>
+                    <p>¿Alguna vez te has preguntado cuál es tu <strong>límite muscular natural</strong>? Esta calculadora de <strong>potencial genético muscular</strong> te da una estimación realista del máximo de masa muscular que puedes construir y a qué velocidad, ayudándote a fijar expectativas lógicas y mantenerte motivado.</p>
+                    <h3>¿Cuál es tu Techo Genético Muscular?</h3>
+                    <p>Tu capacidad para ganar músculo está fuertemente influenciada por tu genética, en particular por tu estructura ósea. Para estimar tu máximo potencial, usamos el <strong>modelo de Casey Butt</strong>, que se basa en tu altura y las circunferencias de tus articulaciones (muñeca y tobillo).</p>
+                    <p>Este modelo te da una cifra de tu <strong>peso corporal magro máximo</strong> teórico, es decir, tu peso si tuvieras un porcentaje de grasa muy bajo. Es una meta a muy largo plazo que representa tu tope genético.</p>
+                    <h3>¿Cuánto Músculo se Puede Ganar en un Año?</h3>
+                    <p>La ganancia de músculo no es lineal. Es mucho más rápida al principio. Para estimar el ritmo, nos basamos en el <strong>modelo de Lyle McDonald</strong>:</p>
                     <ul>
-                        <li>▶️ <strong>Novatos (Año 1):</strong> Es la etapa de "ganancias de novato", donde el progreso es más rápido.</li>
-                        <li>▶️ <strong>Intermedios (Años 2-3):</strong> Las ganancias se vuelven más moderadas pero siguen siendo significativas.</li>
-                        <li>▶️ <strong>Avanzados (+3 Años):</strong> El progreso se ralentiza considerablemente y requiere una programación mucho más precisa.</li>
+                        <li><strong>Novato (0-1 año):</strong> Es donde ocurre la magia de las "newbie gains". Se puede ganar entre <strong>9 y 11 kg</strong> de músculo el primer año de entrenamiento serio.</li>
+                        <li><strong>Intermedio (1-3 años):</strong> El ritmo se reduce a la mitad. La ganancia anual ronda los <strong>4-5 kg</strong>.</li>
+                        <li><strong>Avanzado (+3 años):</strong> El progreso se vuelve lento y costoso, con ganancias de <strong>1-2 kg</strong> por año en el mejor de los casos.</li>
                     </ul>
-                    <p class="mt-4">Usa esta herramienta para entender tu <strong>potencial de crecimiento muscular</strong>. Esto te permitirá fijar metas alcanzables año tras año y evitar la frustración de esperar resultados poco realistas. ¡Concéntrate en el proceso y la consistencia!</p>
+                    <p class="mt-4">Usa esta calculadora para entender tu trayectoria. Saber que las ganancias se ralentizan es normal y te ayudará a seguir entrenando duro y con paciencia.</p>
                 </div>
             </div>
             
-            <!-- Generic Error Message -->
-            <div id="error-message" class="hidden text-center bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded-lg mt-6">
+            <div id="error-message" class="hidden text-center bg-red-100 border border-red-300 text-red-800 px-4 py-3 rounded-lg mt-6">
                 <p>Por favor, rellena todos los campos con valores válidos.</p>
             </div>
         </div>
@@ -309,67 +296,52 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- Gender Button UI Logic ---
             const setupGenderSelectors = () => {
                 const genderRadios = document.querySelectorAll('input[type="radio"][name$="gender"]');
-
                 const updateStyles = (name) => {
                     const group = document.querySelectorAll(`input[type="radio"][name="${name}"]`);
                     group.forEach(radio => {
                         const label = document.querySelector(`label[for="${radio.id}"]`);
                         if (!label) return;
 
-                        // Reset styles to a common base
-                        label.classList.remove('bg-cyan-600', 'bg-pink-500', 'font-bold', 'opacity-60');
-                        label.classList.add('bg-gray-700');
+                        label.classList.remove('bg-cyan-600', 'bg-pink-500', 'text-white', 'font-bold', 'opacity-60');
+                        label.classList.add('bg-gray-200');
 
                         if (radio.checked) {
-                            // Apply selected styles
-                            label.classList.add('font-bold');
+                            label.classList.add('font-bold', 'text-white');
                             label.classList.remove('opacity-60'); 
                             if (radio.value === 'male') {
-                                label.classList.replace('bg-gray-700', 'bg-cyan-600');
+                                label.classList.replace('bg-gray-200', 'bg-cyan-600');
                             } else {
-                                label.classList.replace('bg-gray-700', 'bg-pink-500');
+                                label.classList.replace('bg-gray-200', 'bg-pink-500');
                             }
                         } else {
-                            // Apply unselected styles
                             label.classList.add('opacity-60');
-                            label.classList.remove('font-bold');
+                            label.classList.remove('font-bold', 'text-white');
                         }
                     });
                 };
-
                 genderRadios.forEach(radio => {
                     radio.addEventListener('change', () => updateStyles(radio.name));
                 });
-
                 const uniqueNames = [...new Set(Array.from(genderRadios).map(r => r.name))];
                 uniqueNames.forEach(name => updateStyles(name));
             };
 
-            setupGenderSelectors(); // Initialize gender buttons on load
+            setupGenderSelectors();
 
             const tabs = document.querySelectorAll('.tab-button');
             const panes = document.querySelectorAll('.calculator-pane');
             const errorDiv = document.getElementById('error-message');
 
-            // --- Tab Switching Logic ---
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const targetPaneId = 'pane-' + tab.dataset.tab;
-
                     tabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
-
                     panes.forEach(pane => {
-                        if (pane.id === targetPaneId) {
-                            pane.classList.add('active');
-                        } else {
-                            pane.classList.remove('active');
-                        }
+                        pane.classList.toggle('active', pane.id === targetPaneId);
                     });
-                    // Hide all results when switching tabs
                     document.querySelectorAll('.results-container').forEach(r => {
                          r.classList.remove('visible');
                          r.style.maxHeight = '0';
@@ -378,7 +350,6 @@
                 });
             });
             
-            // --- General Helper Functions ---
             const showResults = (container, content) => {
                 errorDiv.classList.add('hidden');
                 container.innerHTML = content;
@@ -394,7 +365,7 @@
                 });
             };
 
-            // --- Calculator #1: Calories & Macros ---
+            // Calculator #1: Calories & Macros
             document.getElementById('calories-form').addEventListener('submit', e => {
                 e.preventDefault();
                 const gender = document.querySelector('input[name="cgender"]:checked').value;
@@ -405,8 +376,7 @@
                 const goal = parseFloat(document.getElementById('goal').value);
 
                 if (isNaN(age) || isNaN(height) || isNaN(weight) || age <=0 || height <=0 || weight <=0) return showError();
-
-                let bmr; // Mifflin-St Jeor Formula
+                let bmr;
                 if (gender === 'male') {
                     bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
                 } else {
@@ -414,50 +384,34 @@
                 }
                 const tdee = bmr * activity;
                 const targetCalories = tdee + goal;
-
-                // Macros (Protein: 2g/kg, Fat: 25% of calories, Carbs: remainder)
                 const proteinG = weight * 2;
                 const fatG = (targetCalories * 0.25) / 9;
                 const carbsG = (targetCalories - (proteinG * 4) - (fatG * 9)) / 4;
 
                 const resultsHTML = `
-                    <h2 class="text-2xl font-bold text-center mb-4 text-cyan-400">Tus Calorías y Macros</h2>
+                    <h2 class="text-2xl font-bold text-center mb-4 text-cyan-600">Tus Calorías y Macros</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                        <div class="bg-gray-700/50 p-4 rounded-lg">
-                            <h3 class="text-lg font-semibold text-gray-300">Mantenimiento</h3>
-                            <p class="text-2xl font-bold text-white">${tdee.toFixed(0)} kcal</p>
-                        </div>
-                        <div class="bg-cyan-700/50 p-4 rounded-lg border border-cyan-500">
-                            <h3 class="text-lg font-semibold text-cyan-200">Tu Objetivo</h3>
-                            <p class="text-3xl font-bold text-white">${targetCalories.toFixed(0)} kcal</p>
-                        </div>
-                         <div class="bg-gray-700/50 p-4 rounded-lg">
-                            <h3 class="text-lg font-semibold text-gray-300">Metabolismo Basal</h3>
-                            <p class="text-2xl font-bold text-white">${bmr.toFixed(0)} kcal</p>
-                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg"><h3 class="text-lg font-semibold text-gray-700">Mantenimiento</h3><p class="text-2xl font-bold text-gray-900">${tdee.toFixed(0)} kcal</p></div>
+                        <div class="bg-cyan-50 border border-cyan-300 p-4 rounded-lg"><h3 class="text-lg font-semibold text-cyan-800">Tu Objetivo</h3><p class="text-3xl font-bold text-cyan-700">${targetCalories.toFixed(0)} kcal</p></div>
+                        <div class="bg-gray-100 p-4 rounded-lg"><h3 class="text-lg font-semibold text-gray-700">Metabolismo Basal</h3><p class="text-2xl font-bold text-gray-900">${bmr.toFixed(0)} kcal</p></div>
                     </div>
                     <div class="mt-6">
-                        <h3 class="text-xl font-bold text-center mb-3 text-gray-200">Distribución de Macros</h3>
+                        <h3 class="text-xl font-bold text-center mb-3 text-gray-800">Distribución de Macros</h3>
                         <div class="grid grid-cols-3 gap-3 text-center">
-                            <div class="bg-red-500/20 p-3 rounded-lg"><div class="font-bold text-red-300">Proteína</div><div class="text-xl font-semibold">${proteinG.toFixed(0)}g</div></div>
-                            <div class="bg-yellow-500/20 p-3 rounded-lg"><div class="font-bold text-yellow-300">Grasas</div><div class="text-xl font-semibold">${fatG.toFixed(0)}g</div></div>
-                            <div class="bg-blue-500/20 p-3 rounded-lg"><div class="font-bold text-blue-300">Carbs</div><div class="text-xl font-semibold">${carbsG.toFixed(0)}g</div></div>
+                            <div class="bg-red-100 p-3 rounded-lg"><div class="font-bold text-red-800">Proteína</div><div class="text-xl font-semibold">${proteinG.toFixed(0)}g</div></div>
+                            <div class="bg-yellow-100 p-3 rounded-lg"><div class="font-bold text-yellow-800">Grasas</div><div class="text-xl font-semibold">${fatG.toFixed(0)}g</div></div>
+                            <div class="bg-blue-100 p-3 rounded-lg"><div class="font-bold text-blue-800">Carbs</div><div class="text-xl font-semibold">${carbsG.toFixed(0)}g</div></div>
                         </div>
-                    </div>
-                `;
+                    </div>`;
                 showResults(document.getElementById('results-calories'), resultsHTML);
             });
 
-            // --- Calculator #2: Body Fat ---
+            // Calculator #2: Body Fat
             const hipContainer = document.getElementById('hip-container');
             document.querySelectorAll('input[name="fgender"]').forEach(radio => {
                 radio.addEventListener('change', (e) => {
                     hipContainer.classList.toggle('hidden', e.target.value !== 'female');
-                    if(e.target.value === 'female') {
-                        document.getElementById('hip').required = true;
-                    } else {
-                        document.getElementById('hip').required = false;
-                    }
+                    document.getElementById('hip').required = (e.target.value === 'female');
                 });
             });
 
@@ -467,8 +421,7 @@
                 const height = parseFloat(document.getElementById('fheight').value);
                 const neck = parseFloat(document.getElementById('neck').value);
                 const waist = parseFloat(document.getElementById('waist').value);
-                
-                let bfp; // Body Fat Percentage
+                let bfp;
                 if (gender === 'male') {
                     if (isNaN(height) || isNaN(neck) || isNaN(waist) || height <= 0 || neck <= 0 || waist <= 0) return showError();
                     bfp = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
@@ -477,70 +430,54 @@
                     if (isNaN(height) || isNaN(neck) || isNaN(waist) || isNaN(hip) || height <= 0 || neck <= 0 || waist <= 0 || hip <= 0) return showError();
                     bfp = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
                 }
-
                 const resultsHTML = `
-                    <h2 class="text-2xl font-bold text-center mb-4 text-cyan-400">Tu Porcentaje de Grasa</h2>
-                    <div class="text-center bg-gray-700/50 p-6 rounded-lg">
-                        <p class="text-6xl font-bold text-white">${bfp.toFixed(1)}<span class="text-4xl text-cyan-400">%</span></p>
-                    </div>
-                `;
+                    <h2 class="text-2xl font-bold text-center mb-4 text-cyan-600">Tu Porcentaje de Grasa</h2>
+                    <div class="text-center bg-gray-100 p-6 rounded-lg"><p class="text-6xl font-bold text-gray-900">${bfp.toFixed(1)}<span class="text-4xl text-cyan-600">%</span></p></div>`;
                 showResults(document.getElementById('results-fat'), resultsHTML);
             });
             
-            // --- Calculator #3: 1RM ---
+            // Calculator #3: 1RM
             document.getElementById('1rm-form').addEventListener('submit', e => {
                 e.preventDefault();
                 const weight = parseFloat(document.getElementById('lift-weight').value);
-                const reps = parseInt(document.getElementById('reps').value);
-
+                let reps = parseInt(document.getElementById('reps').value);
                 if(isNaN(weight) || isNaN(reps) || weight <= 0 || reps <= 0) return showError();
-                if(reps > 12) {
-                    document.getElementById('reps').value = 12; // Cap reps at 12 for accuracy
+                if (reps === 1) { // 1RM is the weight itself
+                    reps = 1;
+                } else if (reps > 12) {
+                    reps = 12;
+                    document.getElementById('reps').value = 12;
                 }
-                
-                // Brzycki formula
-                const oneRM = weight / (1.0278 - (0.0278 * reps));
-
+                const oneRM = reps === 1 ? weight : weight / (1.0278 - (0.0278 * reps));
                 let percentagesHTML = '';
                 for (let i = 95; i >= 50; i -= 5) {
                     const percWeight = (oneRM * (i / 100)).toFixed(1);
-                    percentagesHTML += `<div class="flex justify-between items-center bg-gray-700 p-3 rounded-md">
-                        <span class="font-medium text-gray-300">${i}% de 1RM</span>
-                        <span class="font-bold text-lg text-cyan-300">${percWeight} kg</span>
-                    </div>`;
+                    percentagesHTML += `<div class="flex justify-between items-center bg-gray-100 p-3 rounded-md"><span class="font-medium text-gray-600">${i}% de 1RM</span><span class="font-bold text-lg text-cyan-700">${percWeight} kg</span></div>`;
                 }
-
                 const resultsHTML = `
-                    <h2 class="text-2xl font-bold text-center mb-4 text-cyan-400">Tu 1RM Estimado</h2>
-                    <div class="text-center bg-gray-700/50 p-6 rounded-lg mb-6">
-                        <p class="text-6xl font-bold text-white">${oneRM.toFixed(1)}<span class="text-4xl text-gray-400"> kg</span></p>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-3 text-gray-200">Porcentajes de Entrenamiento</h3>
-                    <div class="space-y-2">${percentagesHTML}</div>
-                `;
+                    <h2 class="text-2xl font-bold text-center mb-4 text-cyan-600">Tu 1RM Estimado</h2>
+                    <div class="text-center bg-gray-100 p-6 rounded-lg mb-6"><p class="text-6xl font-bold text-gray-900">${oneRM.toFixed(1)}<span class="text-4xl text-gray-500"> kg</span></p></div>
+                    <h3 class="text-xl font-bold text-center mb-3 text-gray-800">Porcentajes de Entrenamiento</h3><div class="space-y-2">${percentagesHTML}</div>`;
                 showResults(document.getElementById('results-1rm'), resultsHTML);
             });
             
-            // --- Calculator #4: Protein ---
+            // Calculator #4: Protein
             document.getElementById('protein-form').addEventListener('submit', e => {
                  e.preventDefault();
                  const weight = parseFloat(document.getElementById('pweight').value);
                  const multiplier = parseFloat(document.getElementById('pgoal').value);
-
                  if(isNaN(weight) || weight <= 0) return showError();
-
                  const proteinIntake = weight * multiplier;
                  const resultsHTML = `
-                    <h2 class="text-2xl font-bold text-center mb-4 text-cyan-400">Tu Ingesta de Proteína</h2>
-                    <div class="text-center bg-gray-700/50 p-6 rounded-lg">
-                        <p class="text-5xl font-bold text-white">${proteinIntake.toFixed(0)}<span class="text-3xl text-gray-400"> g/día</span></p>
-                        <p class="text-gray-300 mt-2">(${multiplier}g por kg de peso corporal)</p>
-                    </div>
-                 `;
+                    <h2 class="text-2xl font-bold text-center mb-4 text-cyan-600">Tu Ingesta de Proteína</h2>
+                    <div class="text-center bg-gray-100 p-6 rounded-lg">
+                        <p class="text-5xl font-bold text-gray-900">${proteinIntake.toFixed(0)}<span class="text-3xl text-gray-500"> g/día</span></p>
+                        <p class="text-gray-600 mt-2">(${multiplier}g por kg de peso corporal)</p>
+                    </div>`;
                  showResults(document.getElementById('results-protein'), resultsHTML);
             });
 
-            // --- Calculator #5: Muscle Potential ---
+            // Calculator #5: Muscle Potential
             document.getElementById('muscle-form').addEventListener('submit', e => {
                 e.preventDefault();
                 const gender = document.querySelector('input[name="mpgender"]:checked').value;
@@ -548,41 +485,28 @@
                 const wrist = parseFloat(document.getElementById('wrist').value);
                 const ankle = parseFloat(document.getElementById('ankle').value);
                 const level = document.getElementById('level').value;
-
                 if (isNaN(height) || isNaN(wrist) || isNaN(ankle) || height <= 0 || wrist <= 0 || ankle <= 0) return showError();
-
                 const heightIn = height / 2.54;
                 const wristIn = wrist / 2.54;
                 const ankleIn = ankle / 2.54;
-
                 let maxLbmLbs = Math.pow(heightIn, 1.5) * ((Math.sqrt(wristIn) / 22.619) + (Math.sqrt(ankleIn) / 17.0104));
                 if (gender === 'female') maxLbmLbs *= 0.85;
-
                 const maxLbmKg = maxLbmLbs * 0.453592;
                 const maxWeightKg = maxLbmKg / 0.90;
-
-                const yearlyGainsKg = {
-                    beginner: [9.0, 4.5, 2.2, 1.1], intermediate: [4.5, 2.2, 1.1], advanced: [2.2, 1.1]
-                };
+                const yearlyGainsKg = { beginner: [9.0, 4.5, 2.2, 1.1], intermediate: [4.5, 2.2, 1.1], advanced: [2.2, 1.1] };
                 const gainsToShow = yearlyGainsKg[level];
                 let startYear = (level === 'beginner') ? 1 : (level === 'intermediate' ? 2 : 3);
-                
                 let gainsHTML = '';
                 gainsToShow.forEach((gain, index) => {
-                    gainsHTML += `<div class="flex justify-between items-center bg-gray-700 p-3 rounded-md">
-                        <span class="font-medium text-gray-300">Año ${startYear + index} de entreno</span>
-                        <span class="font-bold text-lg text-cyan-300">+ ${gain.toFixed(1)} kg</span>
-                    </div>`;
+                    gainsHTML += `<div class="flex justify-between items-center bg-gray-100 p-3 rounded-md"><span class="font-medium text-gray-600">Año ${startYear + index} de entreno</span><span class="font-bold text-lg text-cyan-700">+ ${gain.toFixed(1)} kg</span></div>`;
                 });
-
                 const resultsHTML = `
-                    <h2 class="text-2xl font-bold text-center mb-6 text-cyan-400">Resultados de tu Potencial</h2>
+                    <h2 class="text-2xl font-bold text-center mb-6 text-cyan-600">Resultados de tu Potencial</h2>
                     <div class="grid md:grid-cols-2 gap-4 text-center mb-6">
-                        <div class="bg-gray-700/50 p-4 rounded-lg"><h3 class="text-lg font-semibold text-gray-300">Peso Magro Máximo</h3><p class="text-3xl font-bold text-white">${maxLbmKg.toFixed(1)} kg</p></div>
-                        <div class="bg-gray-700/50 p-4 rounded-lg"><h3 class="text-lg font-semibold text-gray-300">Peso Máximo (10% Grasa)</h3><p class="text-3xl font-bold text-white">${maxWeightKg.toFixed(1)} kg</p></div>
+                        <div class="bg-gray-100 p-4 rounded-lg"><h3 class="text-lg font-semibold text-gray-700">Peso Magro Máximo</h3><p class="text-3xl font-bold text-gray-900">${maxLbmKg.toFixed(1)} kg</p></div>
+                        <div class="bg-gray-100 p-4 rounded-lg"><h3 class="text-lg font-semibold text-gray-700">Peso Máximo (10% Grasa)</h3><p class="text-3xl font-bold text-gray-900">${maxWeightKg.toFixed(1)} kg</p></div>
                     </div>
-                    <div><h3 class="text-xl font-bold text-center mb-4 text-gray-200">Ganancia Anual Estimada</h3><div class="space-y-2">${gainsHTML}</div></div>
-                `;
+                    <div><h3 class="text-xl font-bold text-center mb-4 text-gray-800">Ganancia Anual Estimada</h3><div class="space-y-2">${gainsHTML}</div></div>`;
                 showResults(document.getElementById('results-potential'), resultsHTML);
             });
         });
